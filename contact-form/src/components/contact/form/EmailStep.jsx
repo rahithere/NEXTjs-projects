@@ -15,14 +15,6 @@ function EmailStep() {
                     placeholder="Write your email here..."
                     className="mt-8 w-full rounded-full bg-[#203E4C] px-6 py-4 text-white outline-none placeholder:text-white/70"
                 />
-
-                <button
-                    type="button"
-                    onClick={onNext}
-                    className="mx-auto mt-6 block rounded-full bg-[#9CFF00] px-8 py-3 font-bold text-black"
-                >
-                    Next
-                </button>
             </div>
         </div>
     )

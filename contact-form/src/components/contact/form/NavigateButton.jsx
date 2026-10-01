@@ -3,8 +3,8 @@ import React from 'react'
 function NavigateButton({
     onPrevious,
     onNext,
-    showPrevious,
-    isLastStep,
+    showPrevious, // hides if its the first question
+    isLastStep,   // next --> submit on last field
 
 }) {
     return (
