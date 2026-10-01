@@ -1,0 +1,33 @@
+# dependencies
+/contact-form/node_modules/
+
+# Next.js
+/contact-form/.next/
+/contact-form/out/
+
+# environment variables
+/contact-form/.env*
+!/contact-form/.env.example
+
+# production
+/contact-form/build/
+
+# VS Code
+/.vscode/
+settings.json
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Vercel
+/contact-form/.vercel/
+
+# TypeScript
+/contact-form/*.tsbuildinfo
