@@ -8,6 +8,7 @@ import { NameStep, EmailStep, RadioStep, NavigateButton, } from './exportField.j
 function ContactForm() {
 
     const [currentStep, setCurrentStep] = useState(0)
+    const [submitted, setSubmitted] = useState(false)
     const [formData, setFormData] = useState(
         {
             name: "",
@@ -36,7 +37,8 @@ function ContactForm() {
             })
 
             const result = await response.json()
-            console.log(result.json)
+            console.log(result)
+            if (result.success) setSubmitted(true)
         } catch (error) {
             console.error("Submission Failed", error)
         }
@@ -44,8 +46,19 @@ function ContactForm() {
 
     }
 
+    //give thank you message after form submit
 
-    return (
+    return (submitted ? (
+        <div className="className='mx-auto w-full rounded-2xl border border-white/15 bg-white/[0.04] px-8 py-10 md:px-12 md:py-12 flex flex-col justify-center items-center">
+            <h2 className="text-3xl font-bold text-[#A9FD00]">
+                Thank You!
+            </h2>
+
+            <p className="mt-4 text-white/70">
+                Thank you for contacting us. We’ll get back to you soon.
+            </p>
+        </div>
+    ) : (
         <div className='mx-auto w-full max-w-3xl rounded-2xl border border-white/15 bg-white/[0.04] px-8 py-10 md:px-12 md:py-12'>
             <form
                 onSubmit={handleSubmit}
@@ -78,7 +91,7 @@ function ContactForm() {
                         question={"What’s your monthly recurring revenue?"}
                         options={["Less than $5,000", "$5,000-$10,000", "More than $10,000"]}
                         value={formData.answerTwo}
-                        onchange={(value) => setFormData((prev) => ({ ...prev, answerTwo: value }))}
+                        onChange={(value) => setFormData((prev) => ({ ...prev, answerTwo: value }))}
                     />
                 )}
 
@@ -87,10 +100,11 @@ function ContactForm() {
                     onPrevious={handlePrevious}
                     onNext={handleNext}
                     showPrevious={currentStep > 0}
-                    isLastStep={currentStep === 3}
+                    isLastStep={currentStep === 3 && formData.answerTwo}
                 />
             </form>
         </div>
+    )
     )
 }
 
