@@ -1,4 +1,5 @@
 import React from 'react'
+import ContactForm from '../form/ContactForm'
 
 function ContactSection() {
   return (
@@ -6,7 +7,7 @@ function ContactSection() {
       <div className='mx-auto w-full max-w-5xl'>
 
         {/* text container */}
-        <div className='mx-auto max-w-3xl text-center '>
+        <div className='mx-auto max-w-3xl text-center my-6 '>
           <h1 className='text-4xl font-bold leading-tight md:text-5xl lg:text-6xl'>Are You Ready For A
             <span className='text-[#2EA9FF] block'>Hunting Partner?</span></h1>
           <p className='mt-6 text-base leading-7 text-slate-300 md:text-lg'><span className='text-[#2EA9FF] font-bold'>“Attack isn't about being aggressive; it's about being relentlessly strategic.”</span> Companies
@@ -17,6 +18,8 @@ function ContactSection() {
             for the hunt or still in hustle mode:
           </p>
         </div>
+
+        <ContactForm />
       </div>
     </section>
   )

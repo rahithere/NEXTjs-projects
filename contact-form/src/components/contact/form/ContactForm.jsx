@@ -8,7 +8,6 @@ import { NameStep, EmailStep, RadioStep, NavigateButton, } from './exportField.j
 function ContactForm() {
 
     const [currentStep, setCurrentStep] = useState(0)
-
     const [formData, setFormData] = useState(
         {
             name: "",
@@ -17,20 +16,40 @@ function ContactForm() {
             answerTwo: "",
         }
     )
-
     const handleNext = () => {
         setCurrentStep(prev => prev + 1)
     }
-
     const handlePrevious = () => {
         setCurrentStep(prev => prev - 1)
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+
+            const result = await response.json()
+            console.log(result.json)
+        } catch (error) {
+            console.error("Submission Failed", error)
+        }
+
+
+    }
 
 
     return (
         <div className='mx-auto w-full max-w-3xl rounded-2xl border border-white/15 bg-white/[0.04] px-8 py-10 md:px-12 md:py-12'>
-            <form>
+            <form
+                onSubmit={handleSubmit}
+            >
                 {currentStep == 0 && (
                     <NameStep
                         value={formData.name}

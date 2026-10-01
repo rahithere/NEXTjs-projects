@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EmailStep() {
+function EmailStep({ value, onChange }) {
     return (
         <div>
             <div>

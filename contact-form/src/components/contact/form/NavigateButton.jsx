@@ -20,9 +20,9 @@ function NavigateButton({
             )}
 
             <button
-                type='button'
-                onClick={onNext}
-                className='rounded-full bg[#A9FD00] px-8 py-3 font-bold text-black transition hover:opacity/90'
+                type={isLastStep ? "submit" : "button"}
+                onClick={isLastStep ? undefined : onNext}
+                className='rounded-full bg-[#A9FD00] px-8 py-3 font-bold text-black transition hover:opacity/90'
             >
                 {isLastStep ? "Submit" : "Next"}
             </button>
