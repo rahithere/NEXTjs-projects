@@ -10,6 +10,11 @@ export async function POST(request) {
         };
         console.log(data)
 
+        // check eligibility
+        const eligible = ["Less than 1 year", "1-2 years"].includes(data.answerOne)
+
+
+
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
@@ -19,7 +24,8 @@ export async function POST(request) {
                 Name: ${data.name},
                 Email: ${data.email},
                 Buisness Age: ${data.answerOne},
-                Monthy Revenue: ${data.answerTwo}
+                Monthy Revenue: ${data.answerTwo},
+                eligibility: ${eligible ? "True" : "False"}
                 `
         });
 

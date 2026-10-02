@@ -9,6 +9,7 @@ function ContactForm() {
 
     const [currentStep, setCurrentStep] = useState(0)
     const [submitted, setSubmitted] = useState(false)
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [formData, setFormData] = useState(
         {
             name: "",
@@ -54,6 +55,7 @@ function ContactForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        setIsSubmitting(true)
         try {
             const response = await fetch('/api/contact', {
                 method: "POST",
@@ -68,6 +70,8 @@ function ContactForm() {
             if (result.success) setSubmitted(true)
         } catch (error) {
             console.error("Submission Failed", error)
+        } finally {
+            setIsSubmitting(false)
         }
     }
 
@@ -131,6 +135,7 @@ function ContactForm() {
                     onNext={handleNext}
                     showPrevious={currentStep > 0}
                     isLastStep={currentStep === 3 && formData.answerTwo}
+                    isSubmitting={isSubmitting}
                 />
             </form>
         </div>
