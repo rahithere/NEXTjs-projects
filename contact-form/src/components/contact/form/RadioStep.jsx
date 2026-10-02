@@ -1,6 +1,6 @@
 import React from 'react'
 
-function RadioStep({ question, options, value, onchange }) {
+function RadioStep({ question, options, value, onChange }) {
     return (
         <div>
             <h2 className='text-center text-xl font-bold md:text-2xl'>
@@ -17,7 +17,7 @@ function RadioStep({ question, options, value, onchange }) {
                             type="radio"
                             value={option}
                             checked={value === option}
-                            onChange={e => onchange(e.target.value)}
+                            onChange={e => onChange(e.target.value)}
                             className='h-4 w-4'
                         />
                         <span>{option}</span>

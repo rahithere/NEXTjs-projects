@@ -17,9 +17,36 @@ function ContactForm() {
             answerTwo: "",
         }
     )
+    const [emptyError, setEmptyError] = useState("")
+
+    // logic to handle empty input field 
+    const stepsFields = {
+        0: "name",
+        1: "email",
+        2: "answerOne",
+        3: "answerTwo",
+    }
+
+    const emailRegex = /^[\w -\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+
     const handleNext = () => {
+        const field = stepsFields[currentStep]
+
+        if (!formData[field]?.trim()) {
+            setEmptyError(field)
+            return
+        }
+
+        // check email validity 
+        if (field === "email" && !emailRegex.test(formData.email.trim())) {
+            setEmptyError("email");
+            return;
+        }
+
+        setEmptyError("")
         setCurrentStep(prev => prev + 1)
     }
+
     const handlePrevious = () => {
         setCurrentStep(prev => prev - 1)
     }
@@ -42,9 +69,8 @@ function ContactForm() {
         } catch (error) {
             console.error("Submission Failed", error)
         }
-
-
     }
+    console.log(emptyError);
 
     //give thank you message after form submit
 
@@ -65,6 +91,7 @@ function ContactForm() {
             >
                 {currentStep == 0 && (
                     <NameStep
+                        error={emptyError === "name"}
                         value={formData.name}
                         onChange={(value) => setFormData((prev) => ({ ...prev, name: value }))}
                     />
@@ -72,8 +99,12 @@ function ContactForm() {
 
                 {currentStep == 1 && (
                     <EmailStep
+                        error={emptyError === "email"}
                         value={formData.email}
-                        onChange={(value) => setFormData((prev) => ({ ...prev, email: value }))}
+                        onChange={(value) => {
+                            setEmptyError("")
+                            setFormData((prev) => ({ ...prev, email: value }))
+                        }}
                     />
                 )}
 
