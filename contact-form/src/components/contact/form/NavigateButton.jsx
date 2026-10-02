@@ -13,7 +13,7 @@ function NavigateButton({
                 <button
                     type='button'
                     onClick={onPrevious}
-                    className='rounded-full border border-white/15 px-6 py-3 text-white transition hover:bg-white/10'
+                    className='cursor-pointer rounded-full border border-white/15 px-6 py-3 text-white transition hover:bg-white/10'
                 >
                     Previous
                 </button>
@@ -22,7 +22,7 @@ function NavigateButton({
             <button
                 type={isLastStep ? "submit" : "button"}
                 onClick={isLastStep ? undefined : onNext}
-                className='rounded-full bg-[#A9FD00] px-8 py-3 font-bold text-black transition hover:opacity/90'
+                className='cursor-pointer rounded-full bg-[#A9FD00] px-8 py-3 font-bold text-black transition hover:opacity/90'
             >
                 {isLastStep ? "Submit" : "Next"}
             </button>

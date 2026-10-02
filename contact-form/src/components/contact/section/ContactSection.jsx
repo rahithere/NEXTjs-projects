@@ -2,8 +2,17 @@ import React from 'react'
 import ContactForm from '../form/ContactForm'
 
 function ContactSection() {
+
   return (
-    <section className='relative min-h-screen overflow-hidden bg-black px-6 py-20 text-white md:px-10 lg:px-16'>
+    <section
+      className='relative min-h-screen overflow-hidden bg-black px-6 py-20 text-white md:px-10 lg:px-16'
+    >
+
+      {/* mouse glow  */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#203E4C]/40 blur-[120px]" />
+
+
+
       <div className='mx-auto w-full max-w-5xl'>
 
         {/* text container */}
