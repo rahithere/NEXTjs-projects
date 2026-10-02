@@ -70,7 +70,6 @@ function ContactForm() {
             console.error("Submission Failed", error)
         }
     }
-    console.log(emptyError);
 
     //give thank you message after form submit
 
@@ -113,7 +112,7 @@ function ContactForm() {
                         question={"How long have you been in business?"}
                         options={["Less than 1 year", "1-2 years", "2-5 years", "More than 5 years"]}
                         value={formData.answerOne}
-                        onchange={(value) => setFormData((prev) => ({ ...prev, answerOne: value }))}
+                        onChange={(value) => setFormData((prev) => ({ ...prev, answerOne: value }))}
                     />
                 )}
 
